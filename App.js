@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import Home from "./src/screens/Home";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+const navigator = createStackNavigator({
+  Home: Home
+}, {
+  initialRouteName: "Home",
+  defaultNavigationOptions: {
+    title: "Pedilo Ya"
+  }
 });
+
+export default createAppContainer(navigator);
+
+// Client ID
+
+// DYywj3QwGQD3UF1KGpMaJQ
+// API Key
+
+// 8Ge_TibWIDRBaTkgqJt0uqBovKgCSr7XzcS1CL7naJX9LihTy7IYeGXaKnlv2P7znca0Z3RRpd80reKGbovCXyeONyx_VyCttF6SnudksCR7IJWY_MMZATd4tljLYXYx
