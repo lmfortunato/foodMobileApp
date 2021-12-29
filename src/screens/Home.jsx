@@ -1,5 +1,5 @@
 import React , {useState, useEffect} from "react";
-import {View, StyleSheet, Text} from "react-native"
+import {View, StyleSheet, Text, ScrollView} from "react-native"
 import ResultsList from "../components/ResultsList";
 import SearchBar from "../components/SearchBar";
 import useResults from "../hooks/useResults";
@@ -14,7 +14,7 @@ const Home = () => {
         })
     }
     return(
-        <View>
+        <>
             <SearchBar 
             input={input} 
             handleChange={setInput}
@@ -22,23 +22,31 @@ const Home = () => {
             />
             {errorMessage ? <Text>{errorMessage}</Text>
             : null}
-            <Text>We have found {results.length} results</Text>
+            {/* <Text style={styles.text}>We have found {results.length} results</Text> */}
+            <ScrollView>
+                <ResultsList 
+                results={filterResultsByPrice("$")} 
+                title="Cost Effective"
+                />
 
-            <ResultsList 
-            results={filterResultsByPrice("$")} 
-            title="Cheaper"/>
-
-            <ResultsList 
-            results={filterResultsByPrice("$$")} 
-            title="Bit Pricier"/>
-
-            <ResultsList 
-            results={filterResultsByPrice("$$$")} 
-            title="Expensive"/>
-        </View>
+                <ResultsList 
+                results={filterResultsByPrice("$$")} 
+                title="Bit Pricier"
+                />
+                
+                <ResultsList 
+                results={filterResultsByPrice("$$$")} 
+                title="Big Spender"
+                />
+            </ScrollView>
+        </>
     )
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    text: {
+        marginLeft: 15
+    }
+});
 
 export default Home;

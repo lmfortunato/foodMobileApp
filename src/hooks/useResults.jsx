@@ -21,7 +21,7 @@ export default () => {
     }
 
     useEffect(() => {
-        searchApi("pasta"); //cuando se monta el componente, va a buscar automaticamente un resultado por default.
+        searchApi("drinks"); //cuando se monta el componente, va a buscar automaticamente un resultado por default.
     }, [])
 
     return [searchApi, errorMessage, results] // retornamos lo que necesita el componente home
